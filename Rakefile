@@ -17,7 +17,7 @@ namespace(:test) do
   desc "Run all tests"
   task(:all) do
     tests = Dir['test/**/test_*.rb'] - ['test/test_helper.rb']
-    exit system(%Q{#{ruby} #{gem_opt} -I.:lib -e"%w( #{tests.join(' ')} ).each {|file| require file }"})
+    exit system(%Q{#{ruby} #{gem_opt} -I. -Ilib -e"%w( #{tests.join(' ')} ).each {|file| require file }"})
   end
 
   desc "Run all tests on multiple ruby versions (requires rvm)"
